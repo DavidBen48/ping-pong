@@ -52,15 +52,18 @@ const canvasEl = document.querySelector("canvas"),
         h: 200,
         speed: 5,
         _move: function () {
-          if (this.y + this.h / 2 < ball.y + ball.r) {
+          if ( this.y + this.h / 2 < ball.y + ball.r ) {
             this.y += this.speed
+
           } else {
             this.y -= this.speed
           }
         },
+
         speedUp: function () {
           this.speed += 2
         },
+
         draw: function () {
           canvasCtx.fillStyle ="background: rgb(192,249,206)"
           canvasCtx.fillRect(this.x, this.y, this.w, this.h)
@@ -109,8 +112,8 @@ const canvasEl = document.querySelector("canvas"),
       const ball = {
         x: field.w / 2,
         y: field.h / 2,
-        r: 18,
-        speed: 5,
+        r: 20,
+        speed: 10 - 1,
         directionX: 1,
         directionY: 1,
         _calcPosition: function () {
@@ -163,27 +166,31 @@ const canvasEl = document.querySelector("canvas"),
             this._reverseY() 
           }
         },
+        
         _reverseX: function () {
 
           this.directionX *= -1
         },
+
         _reverseY: function () {
 
           this.directionY *= -1
         },
+
         _speedUp: function () {
           this.speed += 0.5
         },
+
         _pointUp: function () {
           this._speedUp()
           rightPaddle.speedUp()
 
-          this.x = field.w / 2
-          this.y = field.h / 2
+          this.x = field.w / 4
+          this.y = field.h / 4
         },
         _move: function () {
-          this.x += this.directionX * this.speed
-          this.y += this.directionY * this.speed
+          this.x += this.directionX * this.speed 
+          this.y += this.directionY * this.speed 
         },
         draw: function () {
           canvasCtx.fillStyle = "#fbffc7"
